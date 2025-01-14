@@ -1,0 +1,38 @@
+<div className="card-container" key={item.id}>
+              <img
+                src={`https://media.themoviedb.org/t/p/w710_and_h400_multi_faces/${item.poster_path}`}
+                alt={item.title}
+                className="card-image"
+              />
+              <div className="card-content">
+              <p><a href="#">{item.title}</a></p>
+              <p>{releaseDate}</p>
+              </div>
+            </div>
+            <div className="container">
+              <div className="card-container" key={item.id}>
+              <img
+                src={`https://media.themoviedb.org/t/p/w710_and_h400_multi_faces/${item.poster_path}`}
+                alt={item.title}
+                className="card-image"
+              />
+              <div className="card-content">
+              <p><a href="#">{item.title}</a></p>
+              <p>{releaseDate}</p>
+              </div>
+            </div>
+            </div>
+            <div className="card">
+              <img src="{`https://media.themoviedb.org/t/p/w710_and_h400_multi_faces/${item.poster_path}`}" className="card-img-top" alt="..."/>
+                <div className="card-body">
+                  <h5 className="card-title">{item.title}</h5>
+                  <p className="card-text">{item.title}.</p>
+                  <a href="#" className="btn btn-primary">{releaseDate}</a>
+                </div>
+            </div>
+
+            ///
+            <div className="card-body">
+              <h5 className="card-title">{item.title}</h5>
+              <a href="#" className="btn btn-primary">{releaseDate}</a>
+            </div>
