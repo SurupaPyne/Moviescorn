@@ -2,7 +2,7 @@ import React from "react";
 import './Tmdb.css'
 import { Link } from 'react-router-dom';
 
-interface MovieCardProps {
+interface ListCardProps {
   title: string;
   image: string;
   rating: number;
@@ -10,10 +10,10 @@ interface MovieCardProps {
   id: string;
 }
 
-const MovieCard: React.FC<MovieCardProps> = ({ id, title, image, rating, releaseDate }) => {
+const ListCard: React.FC<ListCardProps> = ({ id, title, image, rating, releaseDate }) => {
   return (
     <div className="card border-0" style={{ width: "162px" }}>
-      <Link to={`/movie/${id}`}>
+      <Link to={`/tv/${id}`}>
         <div style={{ position: "relative" }}>
           <img
             src={image}
@@ -53,8 +53,6 @@ const MovieCard: React.FC<MovieCardProps> = ({ id, title, image, rating, release
             ><span>{Math.round(rating*10)}%</span></div>
           </div>
         </div>
-
-
       </Link>
       <div className="card-body" style={{ backgroundColor: '#272727' }}>
         <h6 className="card-title text-wrap fw-bolder" style={{ color: '#ffffff',fontSize: '15px' }}>{title}</h6>
@@ -70,4 +68,4 @@ const MovieCard: React.FC<MovieCardProps> = ({ id, title, image, rating, release
   );
 };
 
-export default MovieCard;
+export default ListCard;

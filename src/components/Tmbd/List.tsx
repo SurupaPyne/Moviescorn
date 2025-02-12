@@ -1,19 +1,19 @@
-// import React from "react";
+import TvCard from './TvCard';
 import './Tmdb.css'
-import MovieCard from "./MovieCard"; // Importing MovieCard
-interface SectionProps {
+
+interface ListProps {
   title: string;
   movies: Array<{
     id: number;
-    title: string;
+    name: string;
     poster_path: string;
     vote_average: number;
-    release_date: string;
+    first_air_date: string;
   }>;
   isScrollable?: boolean;
 }
 
-const Section: React.FC<SectionProps> = ({ title, movies, isScrollable }) => {
+const List: React.FC<ListProps> = ({ title, movies, isScrollable }) => {
   return (
     <div className="mb-4">
       <h2 className="h3 m-2" style={{ color: '#F5AD42' }}>{title}</h2>
@@ -24,12 +24,12 @@ const Section: React.FC<SectionProps> = ({ title, movies, isScrollable }) => {
       >
         {movies.map((movie: any) => (
           <div className="card-container" key={movie.id}>
-            <MovieCard
+            <TvCard
               key={movie.id}
-              title={movie.title}
+              title={movie.name}
               image={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
               rating={movie.vote_average}
-              releaseDate={movie.release_date}
+              releaseDate={movie.first_air_date}
               id={movie.id}
             />
           </div>
@@ -39,4 +39,4 @@ const Section: React.FC<SectionProps> = ({ title, movies, isScrollable }) => {
   );
 };
 
-export default Section;
+export default List;

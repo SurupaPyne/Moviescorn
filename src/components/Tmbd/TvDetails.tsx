@@ -12,15 +12,15 @@ const MovieDetails = () => {
     useEffect(() => {
         const fetchDetails = async () => {
             const response = await fetch(
-                `https://api.themoviedb.org/3/movie/${id}?api_key=8ece0db0fabe683f10cbd7f8364e1a25`
+                `https://api.themoviedb.org/3/tv/${id}?api_key=8ece0db0fabe683f10cbd7f8364e1a25`
             );
             const result = await response.json();
-            //console.log(result);
+            console.log("Details", result);
             setData(result);
         };
         const fetchCastDetails = async () => {
             const response = await fetch(
-                `https://api.themoviedb.org/3/movie/${id}/credits?api_key=8ece0db0fabe683f10cbd7f8364e1a25`
+                `https://api.themoviedb.org/3/tv/${id}/credits?api_key=8ece0db0fabe683f10cbd7f8364e1a25`
             );
             const result = await response.json();
             //console.log(result);
@@ -46,7 +46,7 @@ const MovieDetails = () => {
         };
         const fetchVideoDetails = async () => {
             const response = await fetch(
-                `https://api.themoviedb.org/3/movie/${id}/videos?api_key=8ece0db0fabe683f10cbd7f8364e1a25`
+                `https://api.themoviedb.org/3/tv/${id}/videos?api_key=8ece0db0fabe683f10cbd7f8364e1a25`
             );
             const json_response = await response.json();
             // console.log(json_response);
@@ -88,16 +88,12 @@ const MovieDetails = () => {
                     {/* Right side: Movie details */}
                     <div className="d-flex flex-column movie-content m-4">
                         <div className="d-flex movie-heading">
-                            <h2>{data.title}</h2>
-                            <span>({data.release_date.slice(0, 4)})</span>
+                            <h2>{data.name}</h2>
+                            <span>({data.first_air_date.slice(0, 4)})</span>
                         </div>
                         <div className="d-flex">
                             <ul className="d-flex list-unstyled m-0 p-0 gap-2">
-                                <li>{data.release_date.split("-").reverse().join("/")}</li>
-                                <li className="px-2">•</li>
                                 <li>{data.genres.map((genre: any) => genre.name).join(", ")}</li>
-                                <li className="px-2">•</li>
-                                <li>{Math.floor(data.runtime / 60)}h {data.runtime % 60}m</li>
                             </ul>
                         </div>
                         <div className="d-flex align-items-center mt-3 mb-3">
@@ -180,22 +176,19 @@ const MovieDetails = () => {
                             <strong>Overview</strong>
                             <p>{data.overview}</p>
                         </div>
-                        <div>
-                            {director.length > 0 && (
-                                <>
-                                    <strong>Director</strong>
-                                    <p>{director.map((item: any) => item.name).join(", ")}</p>
-                                </>
-                            )}
+                        {director.length > 0 && (
+                            <>
+                                <strong>Director</strong>
+                                <p>{director.map((item: any) => item.name).join(", ")}</p>
+                            </>
+                        )}
 
-                            {screenplay.length > 0 && (
-                                <>
-                                    <strong>Screenplay, Story</strong>
-                                    <p>{screenplay.map((item: any) => item.name).join(", ")}</p>
-                                </>
-                            )}
-                        </div>
-
+                        {screenplay.length > 0 && (
+                            <>
+                                <strong>Screenplay, Story</strong>
+                                <p>{screenplay.map((item: any) => item.name).join(", ")}</p>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>
